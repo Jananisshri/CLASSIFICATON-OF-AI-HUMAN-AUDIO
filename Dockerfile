@@ -22,6 +22,7 @@ COPY . .
 # Expose the port (Note: Railway will set the PORT environment variable)
 EXPOSE 8000
 
-# Command to run the application using sh -c to ensure $PORT is expanded
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Command to run the application via the robust start.py script
+CMD ["python", "start.py"]
+
 

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, File, UploadFile, Form
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse, HTMLResponse
 from .models import VoiceAnalysisResponse
 from .auth import get_api_key
 from .utils import save_upload_file, cleanup_file
@@ -10,9 +10,11 @@ from typing import Optional
 
 app = FastAPI(title="AI Voice Detection API", version="1.0")
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def root():
-    return {"status": "success", "message": "AI Voice Detection API is online. Visit /docs for documentation."}
+    template_path = os.path.join(os.path.dirname(__file__), "templates", "index.html")
+    with open(template_path, "r", encoding="utf-8") as f:
+        return f.read()
 
 @app.post("/api/voice-detection", response_model=VoiceAnalysisResponse)
 async def detect_voice(
