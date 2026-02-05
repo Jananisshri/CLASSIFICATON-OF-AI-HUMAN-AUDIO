@@ -12,7 +12,7 @@ app = FastAPI(title="AI Voice Detection API", version="1.0")
 
 @app.get("/")
 async def root():
-    return RedirectResponse(url="/docs")
+    return {"status": "success", "message": "AI Voice Detection API is online. Visit /docs for documentation."}
 
 @app.post("/api/voice-detection", response_model=VoiceAnalysisResponse)
 async def detect_voice(
