@@ -1,0 +1,39 @@
+# Audio training data (too large for deployment)
+data/ai/*.mp3
+data/human/*.mp3
+data/*.mp3
+data/*.wav
+
+# Test files
+test_audio.wav
+tests/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Training scripts (not needed in production)
+ml_tools/
+client.py
+
+# Keep model file
+!app/model.joblib
